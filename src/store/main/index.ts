@@ -2,29 +2,27 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { thunks } from './thunks';
 import { selectors } from './selectors';
-import { ITest } from './ITest';
 
-const initialState: ITest = {
-  count: 1,
+const initialState = {
+  posts: 1,
 };
 
 const slice = createSlice({
-  name: 'test',
+  name: 'main',
   initialState: { ...initialState },
   reducers: {},
-  // extraReducers: (builder) => {
-  //   builder
-  //     .addCase(thunks.authLogin.pending, (state) => {
-  //       state.loginStatus = status.PENDING;
-  //     });
-  // },
+  extraReducers: (builder) => {
+    builder.addCase(thunks.getPosts.fulfilled, (state, { payload }) => {
+      state.posts = payload;
+    });
+  },
 });
 
-const test = {
+const main = {
   actions: slice.actions,
   thunks,
   selectors,
 };
 
-export { test };
+export { main };
 export default slice.reducer;

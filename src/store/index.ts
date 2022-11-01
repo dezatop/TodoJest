@@ -7,10 +7,10 @@ import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 
 // MODULES
-import test from './sliceTest/index';
+import main from './main';
 
 const appReducer = combineReducers({
-  test,
+  main,
 });
 
 const rootReducer = (
@@ -24,7 +24,7 @@ const rootReducer = (
 };
 
 const persistConfig = {
-  key: 'key',
+  key: 'project',
   storage,
   blacklist: [],
   whitelist: [],
@@ -39,5 +39,5 @@ const store = configureStore({
 });
 
 // export type RootState = ReturnType<typeof store.getState>;
-
+export type AppState = ReturnType<typeof store.getState>;
 export default store;
