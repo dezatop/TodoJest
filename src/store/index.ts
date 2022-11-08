@@ -4,7 +4,6 @@ import storage from 'redux-persist/lib/storage';
 import { AnyAction, CombinedState, combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import thunk from 'redux-thunk';
 
 // MODULES
 import main from './main';
@@ -35,9 +34,12 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = configureStore({
   reducer: persistedReducer,
   devTools: process.env.NODE_ENV !== 'production',
-  middleware: [thunk],
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
-// export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 export type AppState = ReturnType<typeof store.getState>;
 export default store;
