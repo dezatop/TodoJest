@@ -17,7 +17,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: install modules
         run: |
-         cd /home/runner/work/TodoJest/TodoJest/public
+         cd /home/runner/work/TodoJest/TodoJest/TodoJest/public
          npm install
       - name: build projects
         run: npm run build
