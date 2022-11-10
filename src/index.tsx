@@ -5,7 +5,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import './styles/app.scss';
 import { BrowserRouter } from 'react-router-dom';
-import store from './store';
+import { store } from './store';
 import App from './App';
 import Theme from './components/App/GlobalStyle/Theme';
 import reportWebVitals from './reportWebVitals';

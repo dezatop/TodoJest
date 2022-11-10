@@ -4,7 +4,7 @@ import React, { FC, useState } from 'react';
 const theme = {
   LIGHT: {
     gray: {
-      1: '#f2f2f2',
+      1: '#4f4f4f',
     },
   },
   DARK: {},

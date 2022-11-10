@@ -26,20 +26,24 @@ const persistConfig = {
   key: 'project',
   storage,
   blacklist: [],
-  whitelist: [],
+  whitelist: ['main'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const store = configureStore({
-  reducer: persistedReducer,
-  devTools: process.env.NODE_ENV !== 'production',
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
-});
+const createStore = (initialState = {}) => {
+  return configureStore({
+    reducer: persistedReducer,
+    preloadedState: initialState,
+    devTools: process.env.NODE_ENV !== 'production',
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: false,
+      }),
+  });
+};
 
+export const store = createStore();
 export type AppDispatch = typeof store.dispatch;
 export type AppState = ReturnType<typeof store.getState>;
-export default store;
+export default createStore;

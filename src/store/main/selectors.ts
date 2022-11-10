@@ -1,7 +1,7 @@
 import { AppState } from 'store';
 
 const selectors = {
-  posts: (state: AppState) => state.main.posts,
+  tasks: (state: AppState) => state.main.tasks,
 };
 
 export { selectors };
