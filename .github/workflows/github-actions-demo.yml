@@ -16,7 +16,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: ls
-        run: ls
+        run: |
+          cd /home/runner/work/TodoJest/
+          ls
       - name: install modulesss
         run: npm install
       - name: build projects
