@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 jobs:
   name_jobs_exaple:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     strategy:
       matrix:
         node-version: [ 16.x ]
@@ -16,8 +16,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: install modules
-        run: |
-         cd /home/runner/work
-         npm install
+        run: npm install
       - name: build projects
         run: npm run build
